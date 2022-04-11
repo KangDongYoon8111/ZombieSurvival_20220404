@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class Getter
 {
-    private int myField;
+    public int myFiled { get; private set; }
 
-    public int GetMyField() 
-    { 
-        return myField; 
-    }
-    public void SetMyField(int NewValue) 
-    { 
-        myField = NewValue; 
-    }
 }
