@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class HealthPack : MonoBehaviour, IItem
 {
-    public float health = 50;
+    public int health = 50; // ì²´ë ¥ì„ íšŒë³µí•  ìˆ˜ì¹˜
 
     public void Use(GameObject target)
     {
-        // targetÀÇ Ã¼·ÂÀ» È¸º¹ÇÏ´Â Ã³¸®
-        Debug.Log("Ã¼·ÂÀ» È¸º¹Çß´Ù : " + health);
+        LivingEntity life = target.GetComponent<LivingEntity>();
+
+        if (life != null)
+        {
+            life.RestoreHealth(health);
+        }
+
+        Destroy(gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Use(gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
