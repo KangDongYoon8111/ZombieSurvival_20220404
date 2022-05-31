@@ -5,7 +5,6 @@ using UnityEngine;
 public class ZombieSpawner : MonoBehaviour
 {
     public Zombie zombiePrefab; // 생성할 좀비 원본 프리팹
-    public Zombie[] zombiePrefabs;
 
     public ZombieData[] zombieDatas; // 사용할 좀비 셋업 데이터
     public Transform[] spawnPoints; // 좀비 AI를 소환할 위치
@@ -47,6 +46,7 @@ public class ZombieSpawner : MonoBehaviour
         // 현재 웨이브 * 1.5를 반올림한 수만큼 좀비 생성
         int spawnCount = Mathf.RoundToInt(wave * 1.5f);
 
+
         // spawnCount만큼 좀비 생성
         for (int i = 0; i < spawnCount; i++)
         {
@@ -64,10 +64,8 @@ public class ZombieSpawner : MonoBehaviour
         // 생성할 위치를 랜덤으로 결정
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-        Zombie zombieObject = zombiePrefabs[Random.Range(0, zombiePrefabs.Length)];
-
         // 좀비 프리팹으로부터 좀비 생성
-        Zombie zombie = Instantiate(zombieObject, spawnPoint.position, spawnPoint.rotation);
+        Zombie zombie = Instantiate(zombiePrefab, spawnPoint.position, spawnPoint.rotation);
 
         // 생성한 좀비의 능력치 설정
         zombie.Setup(zombieData);
